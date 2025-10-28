@@ -98,7 +98,7 @@ export default function CompanyMarketplace() {
                 Manage your cleaning jobs and connect with professional cleaners
               </p>
             </div>
-            <Button asChild>
+            <Button >
               <Link href="/company/post-job">
                 <Plus className="mr-2 h-4 w-4" />
                 Post New Job
@@ -171,7 +171,7 @@ export default function CompanyMarketplace() {
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-semibold">Your Posted Jobs</h2>
-              <Button variant="outline" asChild>
+              <Button variant="outline" >
                 <Link href="/company/post-job">
                   <Plus className="mr-2 h-4 w-4" />
                   Post Another Job
@@ -189,7 +189,7 @@ export default function CompanyMarketplace() {
                   <p className="text-muted-foreground mb-4">
                     Post your first cleaning job to start receiving bids from professional cleaners.
                   </p>
-                  <Button asChild>
+                  <Button >
                     <Link href="/company/post-job">
                       Post Your First Job
                     </Link>

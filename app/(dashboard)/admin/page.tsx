@@ -1,10 +1,3 @@
-import { Suspense } from 'react';
-import { auth } from '@clerk/nextjs/server';
-import { redirect } from 'next/navigation';
-import { listServiceRequests } from '@/actions/cleaning-company';
-import { ServiceRequestTable } from '@/components/admin/service-request-table';
-import { ServiceRequestFilters } from '@/components/admin/service-request-filters';
-import { EmptyState } from '@/components/admin/empty-state';
 import { Button } from '@/components/ui/button';
 import { Plus, Bell, Users, DollarSign } from 'lucide-react';
 import Link from 'next/link';
@@ -17,22 +10,7 @@ interface AdminDashboardProps {
   };
 }
 
-export default async function AdminDashboard({ searchParams }: AdminDashboardProps) {
-  const { userId } = auth();
-  
-  if (!userId) {
-    redirect('/sign-in');
-  }
-
-  const status = searchParams.status ? searchParams.status.split(',') : undefined;
-  const page = searchParams.page ? parseInt(searchParams.page) : 1;
-  
-  const { data: requests, total, page: currentPage, pageSize } = await listServiceRequests({
-    status,
-    urgency: searchParams.urgency,
-    page,
-  });
-
+export default function AdminDashboard({ searchParams }: AdminDashboardProps) {
   // Mock stats - in real app, calculate from database
   const stats = {
     pendingRequests: 12,
@@ -56,7 +34,7 @@ export default async function AdminDashboard({ searchParams }: AdminDashboardPro
             <Bell className="mr-2 h-4 w-4" />
             Notifications
           </Button>
-          <Button asChild>
+          <Button>
             <Link href="/admin/janitors">
               <Users className="mr-2 h-4 w-4" />
               Manage Janitors
@@ -112,7 +90,7 @@ export default async function AdminDashboard({ searchParams }: AdminDashboardPro
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold">Service Requests</h2>
-          <Button asChild>
+          <Button>
             <Link href="/admin/service-requests/new">
               <Plus className="mr-2 h-4 w-4" />
               New Request
@@ -120,20 +98,9 @@ export default async function AdminDashboard({ searchParams }: AdminDashboardPro
           </Button>
         </div>
 
-        <ServiceRequestFilters />
-
-        {requests.length === 0 ? (
-          <EmptyState />
-        ) : (
-          <Suspense fallback={<div>Loading requests...</div>}>
-            <ServiceRequestTable 
-              requests={requests} 
-              total={total}
-              currentPage={currentPage}
-              pageSize={pageSize}
-            />
-          </Suspense>
-        )}
+        <div className="text-center py-8">
+          <p className="text-muted-foreground">Service requests will be displayed here</p>
+        </div>
       </div>
     </div>
   );

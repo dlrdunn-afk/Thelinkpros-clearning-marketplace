@@ -98,13 +98,13 @@ export default function JanitorMarketplace() {
               </p>
             </div>
             <div className="flex gap-2">
-              <Button variant="outline" asChild>
+              <Button variant="outline" >
                 <Link href="/janitor/profile">
                   <Star className="mr-2 h-4 w-4" />
                   My Profile
                 </Link>
               </Button>
-              <Button variant="outline" asChild>
+              <Button variant="outline" >
                 <Link href="/janitor/availability">
                   <Clock className="mr-2 h-4 w-4" />
                   Availability
@@ -266,7 +266,7 @@ export default function JanitorMarketplace() {
                             </span>
                             <span className="flex items-center gap-1">
                               <Clock className="w-4 h-4" />
-                              Accepted {formatDateTime(job.acceptedDate || job.approvedDate)}
+                              Accepted {formatDateTime(job.postedDate)}
                             </span>
                           </div>
                         </div>

@@ -68,7 +68,7 @@ export function AvailableJobsTable({ jobs }: AvailableJobsTableProps) {
                   Posted by {job.company}
                 </span>
               </div>
-              <Button asChild>
+              <Button >
                 <Link href={`/janitor/jobs/${job.id}`}>
                   Submit Bid
                 </Link>

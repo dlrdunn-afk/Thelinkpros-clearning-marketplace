@@ -4,8 +4,7 @@ export function DropdownMenu({ children }: { children: React.ReactNode }) {
   return <div className="relative inline-block text-left">{children}</div>;
 }
 
-export function DropdownMenuTrigger({ asChild, children }: {
-  asChild?: boolean;
+export function DropdownMenuTrigger({ children }: {
   children: React.ReactNode;
 }) {
   return <>{children}</>;

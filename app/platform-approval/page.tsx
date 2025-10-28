@@ -363,7 +363,7 @@ export default function PlatformApproval() {
                             </span>
                             <span className="flex items-center gap-1">
                               <Clock className="w-4 h-4" />
-                              Approved {formatDateTime(job.approvedDate || job.postedDate)}
+                              Approved {formatDateTime(job.postedDate)}
                             </span>
                           </div>
                         </div>

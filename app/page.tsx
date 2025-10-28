@@ -34,13 +34,13 @@ export default function LandingPage() {
               Post jobs, receive bids, and get your space cleaned by verified experts.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild className="text-lg px-8 py-6" style={{backgroundColor: '#0d9488', color: 'white'}}>
+              <Button size="lg"  className="text-lg px-8 py-6" style={{backgroundColor: '#0d9488', color: 'white'}}>
                 <Link href="/company/post-job">
                   Post a Job
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild className="text-lg px-8 py-6">
+              <Button size="lg" variant="outline"  className="text-lg px-8 py-6">
                 <Link href="/janitor/marketplace">
                   Find Work
                   <ArrowRight className="ml-2 w-5 h-5" />
@@ -197,13 +197,13 @@ export default function LandingPage() {
               for their cleaning needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild className="text-lg px-8 py-6">
+              <Button size="lg"  className="text-lg px-8 py-6">
                 <Link href="/company/post-job">
                   <Building2 className="mr-2 w-5 h-5" />
                   Post Your First Job
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild className="text-lg px-8 py-6">
+              <Button size="lg" variant="outline"  className="text-lg px-8 py-6">
                 <Link href="/janitor/marketplace">
                   <Users className="mr-2 w-5 h-5" />
                   Start Earning Today

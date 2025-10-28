@@ -12,8 +12,7 @@ export function Sheet({ children, open, onOpenChange }: {
   );
 }
 
-export function SheetTrigger({ asChild, children }: {
-  asChild?: boolean;
+export function SheetTrigger({ children }: {
   children: React.ReactNode;
 }) {
   return <>{children}</>;

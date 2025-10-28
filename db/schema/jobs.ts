@@ -33,7 +33,7 @@ export const jobs = pgTable('jobs', {
 });
 
 export const jobRelations = relations(jobs, ({ many }) => ({
-  quotes: many(jobQuotes),
-  rfqTargets: many(rfqTargets),
-  assignments: many(jobAssignments),
+  // quotes: many(jobQuotes),
+  // rfqTargets: many(rfqTargets),
+  // assignments: many(jobAssignments),
 }));

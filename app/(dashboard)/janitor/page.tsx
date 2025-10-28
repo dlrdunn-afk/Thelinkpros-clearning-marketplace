@@ -1,22 +1,11 @@
-import { Suspense } from 'react';
-import { auth } from '@clerk/nextjs/server';
-import { redirect } from 'next/navigation';
-import { getJanitorAssignments } from '@/actions/janitor-management';
-import { JanitorAssignmentTable } from '@/components/janitor/assignment-table';
-import { JanitorStats } from '@/components/janitor/janitor-stats';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Clock, CheckCircle, DollarSign, Star } from 'lucide-react';
 import Link from 'next/link';
 
-export default async function JanitorDashboard() {
-  const { userId } = auth();
-  
-  if (!userId) {
-    redirect('/sign-in');
-  }
-
-  const assignments = await getJanitorAssignments(userId);
+export default function JanitorDashboard() {
+  // Mock assignments data
+  const assignments: any[] = [];
 
   // Calculate stats from assignments
   const stats = {
@@ -43,12 +32,12 @@ export default async function JanitorDashboard() {
           </p>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" asChild>
+          <Button variant="outline">
             <Link href="/janitor/profile">
               Profile Settings
             </Link>
           </Button>
-          <Button variant="outline" asChild>
+          <Button variant="outline">
             <Link href="/janitor/availability">
               Update Availability
             </Link>
@@ -115,16 +104,16 @@ export default async function JanitorDashboard() {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold">Your Assignments</h2>
-          <Button variant="outline" asChild>
+          <Button variant="outline">
             <Link href="/janitor/assignments">
               View All
             </Link>
           </Button>
         </div>
 
-        <Suspense fallback={<div>Loading assignments...</div>}>
-          <JanitorAssignmentTable assignments={assignments.slice(0, 5)} />
-        </Suspense>
+        <div className="text-center py-8">
+          <p className="text-muted-foreground">Your assignments will be displayed here</p>
+        </div>
       </div>
 
       {/* Quick Actions */}

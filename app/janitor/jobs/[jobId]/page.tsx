@@ -84,7 +84,7 @@ export default function JobBiddingPage() {
         <div className="max-w-4xl mx-auto">
           {/* Back Button */}
           <div className="mb-6">
-            <Button variant="outline" asChild>
+            <Button variant="outline" >
               <Link href="/janitor/marketplace">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Jobs

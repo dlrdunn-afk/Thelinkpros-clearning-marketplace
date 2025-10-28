@@ -64,7 +64,7 @@ export default function SignUpPage() {
       <div className="w-full max-w-2xl">
         {/* Back Button */}
         <div className="mb-6">
-          <Button variant="outline" asChild>
+          <Button variant="outline" >
             <Link href="/sign-in">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Sign In
@@ -161,10 +161,14 @@ export default function SignUpPage() {
               </div>
               
               {error && (
-                <Alert variant="destructive">
-                  <AlertCircle className="h-4 w-4" />
-                  <AlertDescription>{error}</AlertDescription>
-                </Alert>
+                <div className="bg-red-50 border border-red-200 rounded-md p-4">
+                  <div className="flex">
+                    <AlertCircle className="h-4 w-4 text-red-400" />
+                    <div className="ml-3">
+                      <p className="text-sm text-red-800">{error}</p>
+                    </div>
+                  </div>
+                </div>
               )}
 
               <Button type="submit" className="w-full" disabled={loading}>

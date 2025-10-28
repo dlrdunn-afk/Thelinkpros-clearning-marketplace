@@ -1,13 +1,7 @@
-import { jobs, jobQuotes, rfqTargets, jobAssignments } from './schema';
+// Simplified schema exports for deployment
+export * from './jobs';
+export * from './quotes';
+export * from './rfq';
+export * from './assignments';
 
-export * from './schema/jobs';
-export * from './schema/quotes';
-export * from './schema/rfq';
-export * from './schema/assignments';
-
-export const schema = {
-  jobs,
-  jobQuotes,
-  rfqTargets,
-  jobAssignments,
-};
+// Schema exports for database operations

@@ -1,19 +1,9 @@
-import { Suspense } from 'react';
-import { auth } from '@clerk/nextjs/server';
-import { redirect } from 'next/navigation';
-import { ServiceRequestForm } from '@/components/company/service-request-form';
-import { ServiceRequestHistory } from '@/components/company/service-request-history';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Plus, Clock, CheckCircle, Star } from 'lucide-react';
 import Link from 'next/link';
 
-export default async function CompanyDashboard() {
-  const { orgId, userId } = auth();
-  
-  if (!orgId || !userId) {
-    redirect('/sign-in');
-  }
+export default function CompanyDashboard() {
 
   // Mock data - in real app, fetch from database
   const recentRequests = [
@@ -52,7 +42,7 @@ export default async function CompanyDashboard() {
             Professional cleaning services for your business
           </p>
         </div>
-        <Button asChild>
+        <Button>
           <Link href="/company/request-service">
             <Plus className="mr-2 h-4 w-4" />
             Request Service
@@ -151,16 +141,16 @@ export default async function CompanyDashboard() {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold">Recent Requests</h2>
-          <Button variant="outline" asChild>
+          <Button variant="outline">
             <Link href="/company/request-history">
               View All
             </Link>
           </Button>
         </div>
 
-        <Suspense fallback={<div>Loading requests...</div>}>
-          <ServiceRequestHistory requests={recentRequests} />
-        </Suspense>
+        <div className="text-center py-8">
+          <p className="text-muted-foreground">Recent requests will be displayed here</p>
+        </div>
       </div>
 
       {/* Why Choose Us */}

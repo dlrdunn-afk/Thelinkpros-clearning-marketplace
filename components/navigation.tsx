@@ -28,7 +28,7 @@ export function Navigation() {
             <Link href="/janitor/marketplace" className="text-muted-foreground hover:text-primary transition-colors">
               For Cleaners
             </Link>
-            <Button asChild>
+            <Button >
               <Link href="/sign-in">Get Started</Link>
             </Button>
           </div>
@@ -62,7 +62,7 @@ export function Navigation() {
               >
                 For Cleaners
               </Link>
-              <Button asChild className="w-full">
+              <Button  className="w-full">
                 <Link href="/sign-in" onClick={() => setIsOpen(false)}>
                   Get Started
                 </Link>
