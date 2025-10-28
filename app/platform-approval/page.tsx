@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -27,8 +28,40 @@ interface PostedJob {
 }
 
 export default function PlatformApproval() {
+  const router = useRouter();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const [pendingJobs, setPendingJobs] = useState<PostedJob[]>([]);
   const [approvedJobs, setApprovedJobs] = useState<PostedJob[]>([]);
+
+  useEffect(() => {
+    // Check if user is already authenticated
+    const authStatus = sessionStorage.getItem('platformAuthenticated');
+    if (authStatus === 'true') {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Same password as platform dashboard
+    if (password === 'TheLinkPro2024!') {
+      setIsAuthenticated(true);
+      sessionStorage.setItem('platformAuthenticated', 'true');
+      setError('');
+    } else {
+      setError('Invalid password. Access denied.');
+      setPassword('');
+    }
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    sessionStorage.removeItem('platformAuthenticated');
+    setPassword('');
+    setError('');
+  };
 
   useEffect(() => {
     // Load jobs from localStorage
@@ -121,6 +154,51 @@ export default function PlatformApproval() {
       minute: '2-digit',
     });
   };
+
+  // Show login form if not authenticated
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <Card className="w-full max-w-md">
+          <CardHeader className="text-center">
+            <div className="w-16 h-16 bg-gray-900 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <Users className="w-8 h-8 text-white" />
+            </div>
+            <CardTitle className="text-2xl font-bold text-gray-900">Platform Approval Access</CardTitle>
+            <p className="text-gray-600">Enter password to access job approval</p>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleLogin} className="space-y-4">
+              <div>
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+                  placeholder="Enter platform password"
+                  required
+                />
+              </div>
+              
+              {error && (
+                <div className="bg-red-50 border border-red-200 rounded-md p-3">
+                  <p className="text-sm text-red-800">{error}</p>
+                </div>
+              )}
+              
+              <Button type="submit" className="w-full bg-gray-900 hover:bg-gray-800 text-white">
+                Access Approval System
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-teal-50">
