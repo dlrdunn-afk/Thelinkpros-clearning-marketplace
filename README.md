@@ -192,3 +192,4 @@ The application is designed for deployment on Vercel with:
 ## License
 
 This project is proprietary software for The Link Pro platform.
+# Force deployment trigger
