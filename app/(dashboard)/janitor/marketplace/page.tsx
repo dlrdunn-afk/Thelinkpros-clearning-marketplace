@@ -289,21 +289,6 @@ export default function JanitorMarketplace() {
             </div>
           )}
 
-          {/* Info Card */}
-          <Card className="border-blue-200 bg-blue-50">
-            <CardContent className="p-6">
-              <div className="flex items-center gap-2 text-blue-800 mb-2">
-                <CheckCircle className="w-5 h-5" />
-                <span className="font-medium">How It Works</span>
-              </div>
-              <div className="text-blue-700 text-sm space-y-1">
-                <p>• Jobs are pre-approved by the platform with 40% margin deducted</p>
-                <p>• You see the exact amount you'll earn (60% of original budget)</p>
-                <p>• First cleaner to accept gets the job - no bidding required</p>
-                <p>• Company will contact you directly to schedule the work</p>
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </div>
     </div>
