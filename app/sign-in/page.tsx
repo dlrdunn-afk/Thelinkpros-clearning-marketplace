@@ -49,6 +49,9 @@ export default function SignInPage() {
       sessionStorage.setItem('userEmail', account.email);
       sessionStorage.setItem('userName', account.name);
       sessionStorage.setItem('userType', account.type);
+      
+      // Set site access cookie for middleware
+      document.cookie = 'site-access=granted; path=/; max-age=86400'; // 24 hours
 
       // Redirect based on user type
       if (account.type === 'company') {
